@@ -5,8 +5,7 @@
 #include <iostream>
 
 template <class T>
-class Stack
-{
+class Stack {
  private:
    T* stack;
    size_t size;
@@ -17,8 +16,7 @@ class Stack
 
    Stack(const Stack&);
    
-   ~Stack()
-   {
+   ~Stack() {
      delete[] stack;
    }
 
@@ -27,61 +25,52 @@ class Stack
    void push(T);
    bool isFull() const;
    bool isEmpty() const;
-
 };
 
 
 template <class T>
-Stack<T>::Stack(size_t _size)
-{
+Stack<T>::Stack(size_t _size) {
   stack = new T[_size] ;
   size = _size;
   top = -1;
 }
 
 template <class T>
-Stack<T>::Stack(const Stack& _myStack)
-{
+Stack<T>::Stack(const Stack& _myStack) {
   stack = new T[_myStack.size];
   size = _myStack.size;
   top = _myStack.top;
-  for (int i = 0; i <= top; ++i)
-  {
+  for (int i = 0; i <= top; ++i) {
     stack[i] = _myStack.stack[i];
   }
 }
 
 
 template <class T> 
-T Stack<T>::get() const
-{
+T Stack<T>::get() const {
   if (!this->isEmpty())
     return this->stack[top];
 }
 
 template <class T>
-T Stack<T>::pop()
-{
+T Stack<T>::pop() {
   if (!this->isEmpty())
     return this->stack[this->top--];
 }
 
 template <class T>
-void Stack<T>::push(T elem)
-{
+void Stack<T>::push(T elem) {
   if (!this->isFull())
     this->stack[++this->top] = elem;
 }
 
 template <class T>
-bool Stack<T>::isEmpty() const
-{
+bool Stack<T>::isEmpty() const {
   return (top == -1);
 }
 
 template <class T>
-bool Stack<T>::isFull() const
-{
+bool Stack<T>::isFull() const {
   return (top == size - 1);
 }
 #endif // INCLUDE_MYSTACK_H_
