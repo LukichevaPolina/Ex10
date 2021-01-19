@@ -62,7 +62,10 @@ std::string infix2postfix(std::string infix)
     else (i++);
   }
   while (!stack.isEmpty())
+  {
     postfix += stack.pop();
-  //postfix.erase(postfix.size() - 1);
+    postfix += ' ';
+  }
+  postfix.erase(postfix.size() - 1);
   return postfix;
 }
