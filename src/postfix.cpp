@@ -26,8 +26,7 @@ std::string infix2postfix(std::string infix) {
         }
         if (stack.get() == '(') stack.pop();
         stack.push(infix[i++]);
-      } else
-        stack.push(infix[i++]);
+      } else stack.push(infix[i++]);
     } else if (
       infix[i] == '+' || infix[i] == '-'
       ) {
@@ -44,8 +43,7 @@ std::string infix2postfix(std::string infix) {
         postfix += infix[i++];
       }
       postfix += ' ';
-    } else
-      i++;
+    } else i++;
   }
   while (!stack.isEmpty()) {
     postfix += stack.pop();
