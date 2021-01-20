@@ -6,9 +6,9 @@ std::string infix2postfix(std::string infix) {
   Stack<char> stack(200);
   int i = 0;
   while (i < infix.size()) {
-    if (infix[i] == '(')
+    if (infix[i] == '(') {
       stack.push(infix[i++]);
-    else {
+    } else {
       if (infix[i] == ')') {
         while (!stack.isEmpty() && stack.get() != '(') {
           postfix += stack.pop();
@@ -34,8 +34,7 @@ std::string infix2postfix(std::string infix) {
           } else {
             stack.push(infix[i++]);
           }
-        }
-        else {
+        } else {
           if (infix[i] == '+' ||
             infix[i] == '-') {
             while (!stack.isEmpty() &&
@@ -45,8 +44,7 @@ std::string infix2postfix(std::string infix) {
             }
             if (stack.get() == '(') stack.pop();
             stack.push(infix[i++]);
-          }
-          else {
+          } else {
             if (infix[i] != ' ') {
               while (infix[i] >= '0' &&
                 infix[i] <= '9' ||
@@ -54,8 +52,9 @@ std::string infix2postfix(std::string infix) {
                 postfix += infix[i++];
               }
               postfix += ' ';
-            } else
-                i++;
+            } else {
+              i++;
+            }
           }
         }
       }
